@@ -14,6 +14,13 @@ A lightweight browser-based note-taking app. Create notes, organize them by cate
 
 Open `index.html` in a modern web browser. No installation or build step is required.
 
+## What I learned
+
+- Semantic HTML and correctly associated labels make forms easier to use.
+- Flexbox and media queries help keep a form usable across screen sizes.
+- Rendering user input with `textContent` avoids treating note text as HTML.
+- `localStorage` can preserve structured data between browser sessions.
+
 ## Project files
 
 - `index.html` contains the page structure and form.
