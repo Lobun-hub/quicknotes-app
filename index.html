@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>quicknotes-app</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Quick Notes</h1>
+  </header>
+
+  <main>
+    <section aria-labelledby="create-note-heading">
+      <h2 id="create-note-heading">Create a note</h2>
+      <form id="note-form">
+        <label for="note-input">Note</label>
+        <input id="note-input" name="note" type="text" required>
+
+        <label for="note-category">Category</label>
+        <select id="note-category" name="category">
+          <option value="personal">Personal</option>
+          <option value="work">Work</option>
+          <option value="ideas">Ideas</option>
+        </select>
+
+        <button type="submit">Add note</button>
+      </form>
+      <p id="error-message" role="alert" aria-live="polite"></p>
+    </section>
+
+    <section aria-labelledby="your-notes-heading">
+      <h2 id="your-notes-heading">Your notes</h2>
+      <label for="search-input">Search notes</label>
+      <input id="search-input" name="search" type="search">
+      <p id="note-count">0 notes</p>
+      <ul id="notes-list"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Quick Notes</p>
+  </footer>
+</body>
+</html>
