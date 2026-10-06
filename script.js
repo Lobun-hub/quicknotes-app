@@ -58,16 +58,20 @@ function render() {
 	filteredNotes.forEach((note) => {
 		const noteElement = document.createElement("li");
 		const noteText = document.createElement("p");
-		const noteDetails = document.createElement("small");
+		const categoryLabel = document.createElement("small");
+		const createdAt = document.createElement("time");
 		const deleteButton = document.createElement("button");
 
-		noteElement.classList.add(note.category);
+		noteElement.classList.add(`category-${note.category}`);
 		noteText.textContent = note.text;
-		const categoryLabel = note.category[0].toUpperCase() + note.category.slice(1);
-		noteDetails.textContent = `${categoryLabel} · ${new Intl.DateTimeFormat(undefined, {
+		categoryLabel.className = "note-category-label";
+		categoryLabel.textContent = note.category[0].toUpperCase() + note.category.slice(1);
+		const noteDate = new Date(note.createdAt);
+		createdAt.dateTime = noteDate.toISOString();
+		createdAt.textContent = new Intl.DateTimeFormat(undefined, {
 			dateStyle: "medium",
 			timeStyle: "short",
-		}).format(new Date(note.createdAt))}`;
+		}).format(noteDate);
 		deleteButton.type = "button";
 		deleteButton.textContent = "Delete";
 		deleteButton.setAttribute("aria-label", `Delete note: ${note.text}`);
@@ -77,7 +81,7 @@ function render() {
 			render();
 		});
 
-		noteElement.append(noteText, noteDetails, deleteButton);
+		noteElement.append(noteText, categoryLabel, createdAt, deleteButton);
 		noteElements.append(noteElement);
 	});
 
