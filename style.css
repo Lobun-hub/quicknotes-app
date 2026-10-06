@@ -127,6 +127,22 @@ button:focus-visible {
 	outline-offset: 3px;
 }
 
+#clear-all-button {
+	margin: 0 0 1rem;
+	color: #24332e;
+	background: #dfe8e2;
+}
+
+#clear-all-button:hover {
+	background: #cbd9d0;
+}
+
+#clear-all-button:disabled {
+	color: #64746c;
+	background: #e8eeea;
+	cursor: not-allowed;
+}
+
 #error-message {
 	min-height: 1.4em;
 	margin: 0.5rem 0 0;
@@ -169,6 +185,12 @@ button:focus-visible {
 
 #notes-list li.category-study {
 	border-left-color: #3f6ea8;
+}
+
+#notes-list li.empty-state {
+	color: #52645c;
+	border: 1px dashed #aebdb5;
+	text-align: center;
 }
 
 footer {

@@ -5,6 +5,7 @@ const searchInput = document.querySelector("#search-input");
 const notesList = document.querySelector("#notes-list");
 const noteCount = document.querySelector("#note-count");
 const errorMessage = document.querySelector("#error-message");
+const clearAllButton = document.querySelector("#clear-all-button");
 
 const storageKey = "quicknotes-notes";
 const validCategories = new Set(["personal", "work", "study", "ideas"]);
@@ -51,7 +52,6 @@ function render() {
 	const searchTerm = searchInput.value.trim().toLocaleLowerCase();
 	const filteredNotes = notes.filter((note) =>
 		note.text.toLocaleLowerCase().includes(searchTerm)
-		|| note.category.toLocaleLowerCase().includes(searchTerm)
 	);
 	const noteElements = document.createDocumentFragment();
 
@@ -84,8 +84,15 @@ function render() {
 		noteElement.append(noteText, categoryLabel, createdAt, deleteButton);
 		noteElements.append(noteElement);
 	});
+	if (searchTerm && filteredNotes.length === 0) {
+		const noResultsMessage = document.createElement("li");
+		noResultsMessage.className = "empty-state";
+		noResultsMessage.textContent = "No notes match your search.";
+		noteElements.append(noResultsMessage);
+	}
 
 	notesList.replaceChildren(noteElements);
+	clearAllButton.disabled = notes.length === 0;
 	noteCount.textContent = notes.length === 0
 		? "You have no notes yet."
 		: notes.length === 1
@@ -127,5 +134,15 @@ noteInput.addEventListener("input", () => {
 });
 
 searchInput.addEventListener("input", render);
+
+clearAllButton.addEventListener("click", () => {
+	if (notes.length === 0 || !confirm("Delete all notes?")) {
+		return;
+	}
+
+	notes = [];
+	saveNotes();
+	render();
+});
 
 render();
