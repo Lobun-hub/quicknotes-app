@@ -86,7 +86,11 @@ function render() {
 	});
 
 	notesList.replaceChildren(noteElements);
-	noteCount.textContent = `${filteredNotes.length} ${filteredNotes.length === 1 ? "note" : "notes"}`;
+	noteCount.textContent = notes.length === 0
+		? "You have no notes yet."
+		: notes.length === 1
+			? "You have 1 note."
+			: `You have ${notes.length} notes.`;
 }
 
 noteForm.addEventListener("submit", (event) => {
@@ -94,7 +98,7 @@ noteForm.addEventListener("submit", (event) => {
 
 	const text = noteInput.value.trim();
 	if (!text) {
-		errorMessage.textContent = "Please enter a note.";
+		errorMessage.textContent = "Please type a note first.";
 		noteInput.focus();
 		return;
 	}
