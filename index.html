@@ -17,15 +17,19 @@
     <section aria-labelledby="create-note-heading">
       <h2 id="create-note-heading">Add a note</h2>
       <form id="note-form">
-        <label for="note-input">Note</label>
-        <input id="note-input" name="note" type="text" required>
+        <div class="form-field">
+          <label for="note-input">Note</label>
+          <input id="note-input" name="note" type="text" required>
+        </div>
 
-        <label for="note-category">Category</label>
-        <select id="note-category" name="category">
-          <option value="personal">Personal</option>
-          <option value="work">Work</option>
-          <option value="study">Study</option>
-        </select>
+        <div class="form-field">
+          <label for="note-category">Category</label>
+          <select id="note-category" name="category">
+            <option value="personal">Personal</option>
+            <option value="work">Work</option>
+            <option value="study">Study</option>
+          </select>
+        </div>
 
         <button type="submit">Add Note</button>
       </form>

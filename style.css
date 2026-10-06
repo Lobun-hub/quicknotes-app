@@ -21,7 +21,7 @@ body {
 }
 
 header {
-	padding: 1.4rem max(1.25rem, calc((100% - 900px) / 2));
+	padding: 1.4rem max(1.25rem, calc((100% - 700px) / 2));
 	color: #f7f8f3;
 	background: #214c40;
 	border-bottom: 4px solid #e6a45d;
@@ -41,13 +41,21 @@ header h1 {
 }
 
 main {
-	width: min(900px, calc(100% - 2.5rem));
+	width: min(700px, calc(100% - 2.5rem));
 	flex: 1;
-	margin: 2.5rem auto;
+	margin: 2rem auto;
+}
+
+section {
+	padding: 1.5rem;
+	background: #fff;
+	border: 1px solid #d0dbd4;
+	border-radius: 8px;
+	box-shadow: 0 3px 12px rgb(36 51 46 / 6%);
 }
 
 section + section {
-	margin-top: 2.5rem;
+	margin-top: 1.25rem;
 }
 
 h2 {
@@ -59,10 +67,16 @@ h2 {
 
 #note-form {
 	display: flex;
+	align-items: flex-end;
+	gap: 0.75rem;
+}
+
+.form-field {
+	display: flex;
+	flex: 1 1 0;
 	flex-direction: column;
-	align-items: stretch;
-	gap: 0.65rem;
-	max-width: 38rem;
+	gap: 0.5rem;
+	min-width: 0;
 }
 
 label {
@@ -127,8 +141,8 @@ button:focus-visible {
 
 #notes-list {
 	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 0.25rem 1rem;
+	grid-template-columns: 1fr;
+	gap: 0.5rem;
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -136,7 +150,7 @@ button:focus-visible {
 
 #notes-list li {
 	min-width: 0;
-	margin: 0.5rem 0;
+	margin: 0;
 	padding: 1rem;
 	overflow-wrap: anywhere;
 	background: #fff;
@@ -145,19 +159,16 @@ button:focus-visible {
 	border-radius: 6px;
 }
 
-#notes-list li.personal {
-	background: #f2f7ed;
-	border-left-color: #6e9c58;
+#notes-list li.category-personal {
+	border-left-color: #16877a;
 }
 
-#notes-list li.work {
-	background: #edf4f7;
-	border-left-color: #4f8295;
+#notes-list li.category-work {
+	border-left-color: #942f3c;
 }
 
-#notes-list li.study {
-	background: #fbf1e5;
-	border-left-color: #d38a3e;
+#notes-list li.category-study {
+	border-left-color: #3f6ea8;
 }
 
 footer {
@@ -182,15 +193,29 @@ footer p {
 		margin: 1.5rem auto;
 	}
 
+	section {
+		padding: 1.1rem;
+	}
+
 	section + section {
-		margin-top: 2rem;
+		margin-top: 1rem;
 	}
 
-	#notes-list {
-		grid-template-columns: 1fr;
+	#note-form {
+		flex-direction: column;
+		align-items: stretch;
 	}
 
-	#note-form button {
+	.form-field {
+		width: 100%;
+	}
+
+	#note-form > button {
 		align-self: stretch;
 	}
+}
+
+#note-form > button {
+	align-self: flex-end;
+	margin-top: 0;
 }
