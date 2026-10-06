@@ -7,7 +7,7 @@ const noteCount = document.querySelector("#note-count");
 const errorMessage = document.querySelector("#error-message");
 
 const storageKey = "quicknotes-notes";
-const validCategories = new Set(["personal", "work", "ideas"]);
+const validCategories = new Set(["personal", "work", "study", "ideas"]);
 
 function loadNotes() {
 	try {
@@ -24,6 +24,9 @@ function loadNotes() {
 			&& validCategories.has(note.category)
 			&& typeof note.createdAt === "string"
 			&& !Number.isNaN(Date.parse(note.createdAt))
+		).map((note) => note.category === "ideas"
+			? { ...note, category: "study" }
+			: note
 		);
 	} catch {
 		return [];
@@ -60,7 +63,8 @@ function render() {
 
 		noteElement.classList.add(note.category);
 		noteText.textContent = note.text;
-		noteDetails.textContent = `${note.category} · ${new Intl.DateTimeFormat(undefined, {
+		const categoryLabel = note.category[0].toUpperCase() + note.category.slice(1);
+		noteDetails.textContent = `${categoryLabel} · ${new Intl.DateTimeFormat(undefined, {
 			dateStyle: "medium",
 			timeStyle: "short",
 		}).format(new Date(note.createdAt))}`;

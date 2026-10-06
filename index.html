@@ -10,11 +10,12 @@
 <body>
   <header>
     <h1>Quick Notes</h1>
+    <p class="tagline">Thoughts, captured.</p>
   </header>
 
   <main>
     <section aria-labelledby="create-note-heading">
-      <h2 id="create-note-heading">Create a note</h2>
+      <h2 id="create-note-heading">Add a note</h2>
       <form id="note-form">
         <label for="note-input">Note</label>
         <input id="note-input" name="note" type="text" required>
@@ -23,10 +24,10 @@
         <select id="note-category" name="category">
           <option value="personal">Personal</option>
           <option value="work">Work</option>
-          <option value="ideas">Ideas</option>
+          <option value="study">Study</option>
         </select>
 
-        <button type="submit">Add note</button>
+        <button type="submit">Add Note</button>
       </form>
       <p id="error-message" role="alert" aria-live="polite"></p>
     </section>
