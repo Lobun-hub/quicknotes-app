@@ -27,6 +27,23 @@ header {
 	border-bottom: 4px solid #e6a45d;
 }
 
+.brand-lockup {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+}
+
+.app-logo {
+	display: block;
+	width: 48px;
+	height: 48px;
+	flex: 0 0 auto;
+}
+
+.brand-copy {
+	min-width: 0;
+}
+
 header h1 {
 	margin: 0;
 	font-family: Georgia, "Times New Roman", serif;
